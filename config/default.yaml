@@ -1,0 +1,36 @@
+# Human-Like Chess Bot (HLC) Configuration
+
+seed: 42
+
+move_engine:
+  name: "maia3"
+  model: "maia3-79m"       # "maia3-5m", "maia3-23m", "maia3-79m"
+  elo: 1500
+  self_elo: 1500
+  oppo_elo: 1500
+  temperature: 1.0         # 0.0 = argmax, 1.0 = standard sampling
+  top_p: 1.0               # 1.0 = disabled, < 1.0 = nucleus sampling
+  device: "cpu"            # "cpu" or "cuda"
+  use_amp: false           # AMP disabled on CPU
+  use_uci_history: true    # Reconstruct board sequence history (depth 8)
+  multipv: 5               # Number of top candidate moves for WDL / inspection
+
+timing_model:
+  backend: "clock_only"    # "clock_only" | "heuristic" | "chessmimic" | "own_head"
+  clock_only:
+    base_fraction: 0.035   # mean fraction of own clock per move
+    sigma: 0.65            # log-normal dispersion parameter
+    min_time: 0.2          # minimum think seconds
+  heuristic:
+    base_fraction: 0.035
+    sigma: 0.65
+    entropy_weight: 0.3    # hypothesis: higher policy entropy increases think time
+    top_move_weight: -0.2  # high top move probability decreases think time
+
+scheduler:
+  move_overhead: 0.1       # Expected network/adapter lag (seconds)
+  safety_margin: 0.5       # Buffer to avoid flagging on low time (seconds)
+  max_clock_fraction: 0.12 # Never schedule more than 12% of remaining clock
+  min_delay: 0.05          # Absolute lower bound on scheduled delay
+  single_move_delay: 0.15  # Delay when only one legal move exists (e.g. forced recapture)
+  time_trouble_threshold: 10.0 # Seconds remaining where time trouble logic engages
