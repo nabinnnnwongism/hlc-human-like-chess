@@ -31,3 +31,19 @@
 ## ADR-005: Boundary & Site-Agnostic Core
 - **Decision**: The core `BotCore`, `MoveEngine`, `TimingModel`, and `Scheduler` know nothing about specific websites (Lichess, chess.com).
 - **Enforcement**: Strictly no browser automation, OCR, or chess.com scraping. Offline and Bot-account testing only.
+
+## ADR-006: Think-Time Discretization (30 Buckets) & Continuous Inversion
+- **Decision**: Discretize human think time across 30 non-uniform intervals matching empirical blitz distributions: 1-second buckets from 0 to 27s, followed by [27, 30), [30, 35), [35, 45), [45, 60+).
+- **Sampling**: Continuous sampling via piecewise-linear quantile inversion over precomputed cumulative probabilities ensures smooth think times rather than step-function quantization.
+
+## ADR-007: Log-Normal Timing Formulations & The Complexity Hypothesis
+- **Decision**: Parametric baselines utilize a log-normal distribution with dispersion $\sigma \approx 0.65$, matching empirical right-skewed human think times.
+- **Hypothesis**: `HeuristicBaseline` modulates target mean think time with Maia-3 policy entropy ($H$) and top-move probability ($p_1$). High entropy and low top-move probability expand think time; forced moves collapse think time.
+- **Status**: Maintained explicitly as a testable hypothesis to be validated empirically against held-out Lichess PGNs in Phase 3.
+
+## ADR-008: Scheduler Flag-Safety Contract
+- **Decision**: The Scheduler guarantees that the bot will never flag on time across any clock state.
+- **Invariant**:
+  $$\text{delay} \le \max\left(0, \text{clock\_self} - (\text{move\_overhead} + \text{safety\_margin})\right)$$
+  If remaining clock is below the overhead and safety margin, planned delay collapses immediately to 0.0s. Forced moves (single legal escape/recapture) bypass normal sampling and respond near-instantly within `single_move_delay` (0.15s).
+
