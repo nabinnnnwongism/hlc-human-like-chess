@@ -144,7 +144,7 @@ HLC runs an entire session autonomously:
 ### 1. Clone the repository
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/hlc-human-like-chess.git
+git clone https://github.com/nabinnnnwongism/hlc-human-like-chess.git
 cd hlc-human-like-chess
 ```
 
