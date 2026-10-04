@@ -34,3 +34,15 @@ scheduler:
   min_delay: 0.05          # Absolute lower bound on scheduled delay
   single_move_delay: 0.15  # Delay when only one legal move exists (e.g. forced recapture)
   time_trouble_threshold: 10.0 # Seconds remaining where time trouble logic engages
+
+playstyle:
+  name: "rising_fire"      # 11 Grandmasters: tal | petrosian | karpov | kasparov | carlsen | tal_reformed
+                           #                  fischer | morphy | anand | nakamura | ding
+                           # 5 Hybrids:       the_hustler | the_romantic | the_hedgehog | the_vise | the_spider
+                           # 1 Club:          the_club_regular (models human 1200-1800 mistakes)
+                           # 4 Evolving:      rising_fire | iron_throne | balanced_evolution | wildcard
+  time_control: "blitz"    # "bullet" | "blitz" | "rapid"
+  enable_jitter: true      # Per-game Gaussian perturbation (models human game-to-game variability)
+  enable_tilt: true        # In-game dynamic tilt based on material balance & clock pressure
+  bias_strength: null      # null to use archetype default, or float in [0.0, 1.0] to override
+

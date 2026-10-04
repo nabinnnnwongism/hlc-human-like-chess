@@ -244,3 +244,27 @@ class TestSchedulerProperties:
         ]
 
         assert delays_a == delays_b
+
+    def test_adaptive_clock_pacing_tiers(self) -> None:
+        """Verify Option C adaptive clock speed tiers and anti-flagging caps."""
+        scheduler = Scheduler()
+        board = chess.Board()
+        edges = [0.0, 10.0, 20.0]
+        # Distribution with large think time sample (~15s)
+        dist = ThinkTimeDistribution(edges, [0.0, 1.0])
+
+        # Tier 1: Clock = 75s (1:15 remaining) -> should be capped at 2.0s
+        state_75s = GameState(board=board, clock_self=75.0)
+        delay_75s = scheduler.plan(state=state_75s, think_dist=dist, compute_elapsed_s=0.01)
+        assert delay_75s <= 2.0
+
+        # Tier 2: Clock = 25s (Scramble) -> capped at 0.9s
+        state_25s = GameState(board=board, clock_self=25.0)
+        delay_25s = scheduler.plan(state=state_25s, think_dist=dist, compute_elapsed_s=0.01)
+        assert delay_25s <= 0.9
+
+        # Tier 3: Clock = 8s (Emergency Panic) -> capped at 0.35s
+        state_8s = GameState(board=board, clock_self=8.0)
+        delay_8s = scheduler.plan(state=state_8s, think_dist=dist, compute_elapsed_s=0.01)
+        assert delay_8s <= 0.35
+

@@ -1,0 +1,104 @@
+HLC — Human-Like Chess
+Personal Use License v1.0
+
+Copyright (c) 2026 [YOUR GITHUB USERNAME]
+All rights reserved.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GRANT OF LICENSE
+
+Subject to the terms and conditions of this License, the copyright holder
+hereby grants you a limited, non-exclusive, non-transferable, royalty-free
+license to:
+
+  1. DOWNLOAD this software and its source code for personal, non-commercial
+     use only.
+
+  2. RUN this software on your own machines for personal, non-commercial
+     purposes only.
+
+  3. READ the source code for educational and research purposes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RESTRICTIONS — THE FOLLOWING ARE STRICTLY PROHIBITED
+
+You may NOT, under any circumstances:
+
+  1. MODIFY, adapt, translate, or create derivative works based on this
+     software or any portion of it.
+
+  2. DISTRIBUTE, sublicense, publish, upload, or otherwise make available
+     this software or any modified version of it to any third party, whether
+     in source code form, compiled/binary form, or any other form.
+
+  3. SELL, rent, lease, lend, or otherwise commercialize this software or
+     any part of it, in whole or in part.
+
+  4. USE this software, in whole or in part, as a component of any commercial
+     product, service, or offering.
+
+  5. REMOVE or alter any copyright notices, license notices, or attribution
+     statements contained in this software.
+
+  6. REVERSE ENGINEER the proprietary logic, playstyle system, timing model,
+     or any other algorithmic component of this software for the purpose of
+     replication in another project without explicit written permission from
+     the copyright holder.
+
+  7. USE the name "HLC", "Human-Like Chess", or "Project Human Chess", or
+     any confusingly similar name, to endorse or promote products or projects
+     derived from this software.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THIRD-PARTY COMPONENTS
+
+This software integrates the following third-party components, each governed
+by their own separate licenses:
+
+  - Maia-3 (UofTCSSLab): AGPL-3.0
+    https://github.com/CSSLab/maia3
+    Model weights: https://huggingface.co/collections/UofTCSSLab/
+
+  - python-chess (Niklas Fiekas): GPL-3.0-or-later
+    https://github.com/niklasf/python-chess
+
+  - lichess-bot (lichess-bot-devs): AGPL-3.0
+    https://github.com/lichess-bot-devs/lichess-bot
+
+Your use of those components must additionally comply with their respective
+licenses. This Personal Use License does not grant any rights to those
+upstream components beyond what their own licenses permit.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DISCLAIMER OF WARRANTIES
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF,
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TERMINATION
+
+This license and all rights granted herein will terminate automatically and
+immediately, without notice, if you fail to comply with any term or condition
+of this License. Upon termination, you must immediately cease all use of the
+software and destroy all copies in your possession.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONTACT
+
+For commercial licensing inquiries, permissions beyond the scope of this
+license, or any other questions, please open an issue on the GitHub repository
+or contact the copyright holder directly.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

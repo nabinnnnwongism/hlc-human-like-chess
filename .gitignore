@@ -45,3 +45,42 @@ runs/*.json
 
 # Vendor sources
 _maia3_repo/
+
+# HLC runtime data (browser profile, session db, temp files)
+.hlc/
+*.sqlite
+*.db
+data/hlc_agent.db
+fix_clock.py
+fix_unicode.py
+scan_unicode.py
+unicode_audit.txt
+
+# ── Private / internal files — DO NOT publish ──────────────────────────────
+# Game session logs
+HLC.txt
+HLC\ version\ 2.txt
+lichess\ moves.txt
+
+# Internal development notes
+DECISIONS.md
+PROBLEMS.md
+PROCESS.md
+
+# AI assistant config
+GEMINI.md
+.agents/
+
+# Private AI session data
+claude/
+
+# Build artifacts (don't need in repo)
+build/
+dist/
+*.spec
+
+# New folder (temp)
+New\ folder/
+
+# Research scratch files
+research/

@@ -1,0 +1,78 @@
+# lichess-bot config.yml — HLC engine section
+# Copy into your lichess-bot/config.yml and fill in your token.
+#
+# Full config reference:
+#   https://github.com/lichess-bot-devs/lichess-bot/blob/master/config.yml.default
+
+token: "YOUR_LICHESS_BOT_TOKEN_HERE"
+
+url: "https://lichess.org/"
+
+engine:
+  dir: "."
+  name: HLCEngine          # Must match the class name in homemade.py
+  protocol: homemade
+  fake_think_time: false   # MUST be false — HLC scheduler controls all timing
+
+  homemade_options:
+    model: maia3-79m        # maia3-5m | maia3-23m | maia3-79m
+    elo: 1500               # Target playing strength (1000–2800)
+    device: cpu             # cpu | cuda
+    temperature: "1.0"      # Move sampling temperature (0.0=argmax, 1.0=standard)
+    top_p: "1.0"            # Nucleus sampling threshold (1.0=disabled)
+    seed: "42"              # RNG seed for reproducibility
+    timing_backend: heuristic  # heuristic | clock_only
+    opp_elo: "1500"         # Assumed opponent Elo for timing heuristics
+
+    # Scheduler parameters (tune for network/server latency)
+    move_overhead: "0.15"   # Expected network round-trip lag (seconds)
+    safety_margin: "0.80"   # Buffer to avoid flagging on low time (seconds)
+    max_clock_frac: "0.12"  # Max fraction of remaining clock per move
+    min_delay: "0.05"       # Minimum think time regardless of position
+    single_move_delay: "0.15"  # Think time when only one legal move exists
+
+challenge:
+  accept_bot: false
+  deny_listed:
+    usernames: []
+  time_controls:
+    - bullet
+    - blitz
+
+  variants:
+    - standard
+
+  initial_time:
+    min: 60          # 60s = 1 min minimum base time
+    max: 600         # 600s = 10 min maximum base time
+
+  increment:
+    min: 0
+    max: 10
+
+  bullet_requires_increment: true  # Protect against flagging in bullet
+
+greeting:
+  online: "Hello! I'm HLC — a bot that plays like a human (same Elo-calibrated moves AND human-like move timing). Powered by Maia-3. Good luck!"
+  move: ""
+  spectator: "Watching HLC (Human-Like Chess) powered by Maia-3."
+
+# Disable all opening books and online move databases
+# so HLC uses only Maia-3 for move selection
+polyglot:
+  enabled: false
+
+online_moves:
+  chessdb_book:
+    enabled: false
+  lichess_cloud_analysis:
+    enabled: false
+  online_egtb:
+    enabled: false
+
+draw_or_resign:
+  offer_draw_enabled: false
+  resign_enabled: false
+
+matchmaking:
+  allow_matchmaking: false

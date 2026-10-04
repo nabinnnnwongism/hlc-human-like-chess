@@ -16,6 +16,9 @@ dependencies = [
     "scipy>=1.11.0",
     "pyyaml>=6.0.1",
     "huggingface-hub>=0.23.0",
+    "playwright>=1.40.0",
+    "customtkinter>=5.2.0",
+    "darkdetect>=0.8.0",
 ]
 
 [project.optional-dependencies]
